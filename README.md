@@ -1,3 +1,11 @@
+# DUckDB + dbt Test Environment
+
+## Duckdb smoke test
+```bash
+docker compose exec duckdb duckdb /data/pro.raw.duckdb -c "SELECT 'hello' as test;"
+```
+
+## DuckDB CSV import test
 
 ```bash
 docker compose exec duckdb duckdb /data/pro.raw.duckdb -c "CREATE TABLE pro AS SELECT * FROM read_csv_auto(
@@ -10,16 +18,21 @@ docker compose exec duckdb duckdb /data/pro.raw.duckdb -c "CREATE TABLE pro AS S
 );"
 ```
 
+
+### Validation , show row count
 ```bash
 docker compose exec duckdb duckdb /data/pro.raw.duckdb -c "SELECT COUNT(*) FROM pro"
 ```
 
+### Show some data in JSON format
 ```bash
 docker compose exec duckdb duckdb --json /data/pro.raw.duckdb -c "
     SELECT to_json(pro) FROM pro LIMIT 2;
 "
 ```
 
+
+## Initialize dbt project
 
 ```bash
 cd /data
@@ -28,9 +41,18 @@ dbt init hello_duck
 ```
 
 
-bash docker compose run --rm duckdb
+### Launch dbt build
+```bash
+dbt build --project-dir /data/hello-duck
+```
 
-docker compose exec duckdb duckdb /data/pro.raw.duckdb -c "SELECT 'hello' as test;"
+### Show some data
+```bash
+dbt show --project-dir /data/hello-duck --select greeting --limit 10
+```
+
+
+
 
 
 CREATE TABLE demo AS SELECT * FROM range(5);

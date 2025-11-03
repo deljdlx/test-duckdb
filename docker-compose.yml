@@ -11,4 +11,6 @@ services:
     stdin_open: true
     volumes:
       - ./data:/data
+      - ./provision/home/.dbt:/home/duck/.dbt
+      - ./provision/dbt-projects/hello-duck:/data/hello-duck
     working_dir: /data
