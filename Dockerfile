@@ -8,8 +8,13 @@ ARG TARGETARCH
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
       ca-certificates curl unzip \
-      python3 python3-venv python3-distutils \
- && rm -rf /var/lib/apt/lists/*
+      python3 python3-venv python3-distutils
+
+
+RUN apt-get install -y --no-install-recommends \
+  vim
+
+ RUN rm -rf /var/lib/apt/lists/*
 
 # --- install duckdb CLI ---
 RUN set -eux; \

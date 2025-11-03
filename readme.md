@@ -21,6 +21,11 @@ docker compose exec duckdb duckdb --json /data/pro.raw.duckdb -c "
 ```
 
 
+```bash
+cd /data
+dbt init hello_duck
+
+```
 
 
 bash docker compose run --rm duckdb
