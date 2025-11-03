@@ -19,7 +19,7 @@ docker compose exec duckdb duckdb /data/pro.raw.duckdb -c "CREATE TABLE pro AS S
 ```
 
 
-### Validation , show row count
+### Smoke validation , show row count
 ```bash
 docker compose exec duckdb duckdb /data/pro.raw.duckdb -c "SELECT COUNT(*) FROM pro"
 ```
@@ -28,9 +28,12 @@ docker compose exec duckdb duckdb /data/pro.raw.duckdb -c "SELECT COUNT(*) FROM 
 ```bash
 docker compose exec duckdb duckdb --json /data/pro.raw.duckdb -c "
     SELECT to_json(pro) FROM pro LIMIT 2;
-"
+" | jq
 ```
 
+___
+
+# DBT
 
 ## Initialize dbt project
 
@@ -43,25 +46,11 @@ dbt init hello_duck
 
 ### Launch dbt build
 ```bash
-dbt build --project-dir /data/hello-duck
+dbt build --project-dir /data/hello_duck
 ```
 
 ### Show some data
 ```bash
-dbt show --project-dir /data/hello-duck --select greeting --limit 10
+dbt show --project-dir /data/hello_duck --select greeting --limit 10
 ```
-
-
-
-
-
-CREATE TABLE demo AS SELECT * FROM range(5);
-
-
-
-
-
-
-
-
 
