@@ -1,0 +1,5 @@
+SELECT 1 AS id, 'Julien' AS name
+UNION ALL
+SELECT 2, 'Alice'
+UNION ALL
+SELECT 3, 'Bob'
