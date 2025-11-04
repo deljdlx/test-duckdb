@@ -5,3 +5,17 @@ hello_duck:
       type: duckdb
       path: /data/projects/hello_duck/hello.duckdb
       threads: 4
+
+pro:
+  outputs:
+    dev:
+      type: duckdb
+      path: /data/pro.duckdb
+      threads: 1
+
+    prod:
+      type: duckdb
+      path: /data/pro.raw.duckdb
+      threads: 4
+
+  target: dev
