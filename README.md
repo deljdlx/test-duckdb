@@ -40,8 +40,11 @@ ___
 ```bash
 cd /data
 dbt init hello_duck
-
 ```
+
+docker compose exec duckdb dbt init pro
+
+
 
 
 ### Launch dbt build
