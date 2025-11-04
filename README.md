@@ -62,11 +62,16 @@ docker compose exec duckdb duckdb /data/pro.duckdb -c "CREATE TABLE pro AS SELEC
 );"
 ```
 
-### Smoke test pro data
+### Smoke tests pro data
 
 ```bash
 docker compose exec duckdb duckdb /data/pro.duckdb -c "SELECT COUNT(*) FROM pro;"
 ```
+
+```bash
+docker compose exec duckdb duckdb --json /data/pro.duckdb -c "SELECT to_json(pro) FROM pro WHERE column35 IS NOT NULL LIMIT 10;" | jq
+```
+
 
 ### Optionnal, creating dbt project (already done in this repo)
 
@@ -87,5 +92,15 @@ make dbtBuild
 docker compose exec duckdb duckdb --json \
     /data/pro.duckdb -c \
     "SELECT to_json(persons) FROM persons LIMIT 10;" \
+    | jq
+```
+
+
+```bash
+docker compose exec duckdb duckdb --json \
+    /data/pro.duckdb -c \
+    "SELECT to_json(addresses) FROM addresses \
+    WHERE address IS NOT NULL LIMIT \
+    50;" \
     | jq
 ```

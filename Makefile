@@ -38,6 +38,14 @@ dbtBuild: ## Run `dbt build` in a chosen project
 	  env PROJ_NAME="$$proj_name" DBT_BASE_DIR="$(DBT_BASE_DIR)" \
 	  bash -lc 'set -e; cd "$$DBT_BASE_DIR/$$PROJ_NAME" && dbt build --project-dir .'
 
+dbtDeps: ## Run `dbt deps` in a chosen project
+	@proj_name=$(call choose_project); \
+	[ -z "$$proj_name" ] && echo "❌ Aucun projet sélectionné" && exit 1; \
+	echo "📦 dbt deps → $$proj_name"; \
+	$(DC) exec -T $(SERVICE) \
+	  env PROJ_NAME="$$proj_name" DBT_BASE_DIR="$(DBT_BASE_DIR)" \
+	  bash -lc 'set -e; cd "$$DBT_BASE_DIR/$$PROJ_NAME" && dbt deps --project-dir .'
+
 
 # --- run: dbt run (sans tests) ---
 dbtRun: ## Run `dbt run` in a chosen project

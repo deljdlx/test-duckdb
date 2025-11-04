@@ -2,16 +2,11 @@
 version: 2
 
 models:
+  - name: addresses
+    columns: []
   - name: persons
-    description: "A starter dbt model"
-    columns:
-      - name: id
-        description: "The primary key for this table"
-        data_tests:
-          - unique
-          - not_null
-
-  # - name: my_second_dbt_model
+    columns: []
+  # - name: stg_pro
   #   description: "A starter dbt model"
   #   columns:
   #     - name: id
@@ -19,3 +14,6 @@ models:
   #       data_tests:
   #         - unique
   #         - not_null
+  # - name: persons
+  #   description: "A model representing persons"
+  #   columns: []
