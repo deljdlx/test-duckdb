@@ -12,5 +12,4 @@ services:
     volumes:
       - ./data:/data
       - ./provision/home/.dbt:/home/duck/.dbt
-      - ./provision/dbt-projects/hello_duck:/data/hello_duck
     working_dir: /data

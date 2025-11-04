@@ -1,1 +1,3 @@
-data
+/data/*
+!/data/projects/
+/data/projects/logs

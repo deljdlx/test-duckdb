@@ -3,5 +3,33 @@ hello_duck:
   outputs:
     dev:
       type: duckdb
-      path: /data/hello.duckdb
+      path: /data/projects/hello.duckdb
       threads: 4
+
+a:
+  outputs:
+    dev:
+      type: duckdb
+      path: dev.duckdb
+      threads: 1
+
+    prod:
+      type: duckdb
+      path: prod.duckdb
+      threads: 4
+
+  target: dev
+
+aa:
+  outputs:
+    dev:
+      type: duckdb
+      path: dev.duckdb
+      threads: 1
+
+    prod:
+      type: duckdb
+      path: prod.duckdb
+      threads: 4
+
+  target: dev
