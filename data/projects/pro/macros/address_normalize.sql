@@ -1,4 +1,4 @@
-{% macro canon_address(num, rep, type1, type2, voie) -%}
+{% macro canon_address(num, rep, type1, type2, voie, caption) -%}
 NULLIF(
   TRIM(
     CONCAT_WS(' ',
@@ -18,7 +18,8 @@ NULLIF(
                END
         ELSE NULL
       END,
-      NULLIF(TRIM({{ voie }}), '')
+      NULLIF(TRIM({{ voie }}), ''),
+      NULLIF(TRIM({{ caption }}), '')
     )
   ),
   ''
@@ -32,3 +33,8 @@ NULLIF(TRIM({{ pc }}), '')
 {% macro canon_city(city) -%}
 NULLIF(TRIM({{ city }}), '')
 {%- endmacro %}
+
+{% macro canon_caption(caption) -%}
+NULLIF(TRIM({{ caption }}), '')
+{%- endmacro %}
+

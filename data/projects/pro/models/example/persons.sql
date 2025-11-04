@@ -4,7 +4,7 @@
 
 with basePersons as (
     select
-        {{ canon_address('column28','column29','column30','column31', 'column32') }} AS address,
+        {{ canon_address('column28','column29','column30','column31', 'column32', 'column24') }} AS address,
         {{ canon_postal('column35') }} AS postalCode,
         {{ canon_city('column37') }} AS city,
 
@@ -14,11 +14,19 @@ with basePersons as (
         column07 as lastName,
         column08 as firstName,
 
+        column43 as email,
+        column40 as phoneNumber,
+
+
+        column19 as siret,
+        column20 as siren,
+
+        column17 as professionModeCode,
+        column18 as professionModeName,
         column04 as professionnalCivility,
         column09 as professionCode,
         column10 as professionName,
 
-        column40 as phoneNumber,
 
         column48 as activitySectorCode,
         column49 as activitySectorName,
